@@ -6,7 +6,10 @@ import PackageDescription
 let package = Package(
     name: "ComposableKit",
     platforms: [
-        .iOS(.v15)
+        .iOS(.v15),
+        // The macros always build for the Mac (swift-syntax requires macOS 10.15+), and
+        // `swift test` runs on macOS: without this, older toolchains assume macOS 10.13.
+        .macOS(.v12),
     ],
     products: [
         // Reducer, Store, Effect, Dependency, Shared, Bindings, TestStore, TestClock.
